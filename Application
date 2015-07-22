@@ -1,0 +1,35 @@
+import javax.swing.JOptionPane;
+
+public class WordCruncherApp{
+	public static void main(String[]args){
+		
+		String word = "";
+		char letter; 
+		String temporary;
+		String option = ""; 
+		String done = "yes";
+		
+		
+		do{
+		word = JOptionPane.showInputDialog("Please enter a word.");
+		WordCruncher user=new WordCruncher(word);
+		JOptionPane.showMessageDialog(null, user.letters()+ " letters" + "\n"+ user.vowels()+ " vowels" + "\n"+user.inReverse()+ " is the word in reverse" + "\n" + user.pigLatin()+ " is the word in pig latin" + "\n" + user.gibberish() + " is the word in gibberish");
+		
+			do{
+			temporary=JOptionPane.showInputDialog("Please enter one letter.");
+			letter= temporary.charAt(0);
+				if(Character.isLetter(letter))
+					JOptionPane.showMessageDialog(null, user.containsLetter(letter));
+				else
+					JOptionPane.showMessageDialog(null, "That was not a letter.");
+			}while(Character.isLetter(letter)==false);
+		
+			
+			option=JOptionPane.showInputDialog("Will you continue? Please enter yes or no.");	
+					
+				
+		
+		
+	}while(option.equals("yes"));
+}
+}
