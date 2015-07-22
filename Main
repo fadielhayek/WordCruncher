@@ -1,0 +1,89 @@
+public class WordCruncher{
+	
+	private String word;
+	
+	public WordCruncher (){
+		word = new String("default");
+	}
+	public WordCruncher (String newWord){
+		word=newWord;
+	}
+	public int letters(){
+		int count=0; 
+		for(int i=0; i<word.length(); i++){ 
+			if(Character.isLetter(word.charAt(i))) 
+				count++;
+		}		
+		return count;
+	}
+	public int vowels(){
+		int vowels=0;
+		for(int count=0; count<word.length(); count++){
+			if (word.charAt(count)=='a'||
+		 			word.charAt(count)=='A'||
+				word.charAt(count)=='e'||
+					word.charAt(count)=='E'||
+				word.charAt(count)=='i'||
+					word.charAt(count)=='I'||
+				word.charAt(count)=='o'||
+					word.charAt(count)=='O'||
+				word.charAt(count)=='u'||
+					word.charAt(count)=='U')
+					vowels++;
+			}
+				return vowels;
+	}
+	public boolean beginVowel(){
+		 if(word.charAt(0)=='a'||
+		 		word.charAt(0)=='A'||
+			word.charAt(0)=='e'||
+				word.charAt(0)=='E'||
+			word.charAt(0)=='i'||
+				word.charAt(0)=='I'||
+			word.charAt(0)=='o'||
+				word.charAt(0)=='O'||
+			word.charAt(0)=='u'||
+				word.charAt(0)=='U')
+			return true;
+		else 
+			return false;		
+	}
+	public String pigLatin(){
+		String pig=""; 
+			
+			if(beginVowel()==false){
+				pig= word.substring(1)+word.substring(0,1)+"ay";
+			}
+			else if(beginVowel()==true){
+				pig=word+"way";
+			}
+			return pig;
+			
+	}
+	
+	public String gibberish(){
+		String gibb="";
+			if(beginVowel()==false)
+				gibb=word.substring(0,1)+"ithag"+word.substring(1);
+			if(beginVowel()==true)
+				gibb=word.substring(0,1)+"ithag"+word;
+			return gibb;
+	}
+	public String inReverse(){
+		String reverse="";
+		for (int k=word.length()-1; k>=0; k--)
+			reverse=reverse+word.charAt(k);
+		return reverse;	
+	}
+	public int containsLetter(char letter){
+		int similar=0;
+		char temp; 
+		for (int x=0; x<word.length(); x++){
+			temp=word.charAt(x);
+			if(temp==letter)
+				similar++;
+		}
+		return similar;
+	}
+	}	
+	
